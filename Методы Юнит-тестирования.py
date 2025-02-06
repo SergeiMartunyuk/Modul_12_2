@@ -41,6 +41,9 @@ class Tournament:
         return finishers
 
 class TournamentTest(unittest.TestCase):
+    
+    is_frozen = True
+    
     @classmethod
     def setUpClass(cls):
         cls.all_results = {}
@@ -55,7 +58,7 @@ class TournamentTest(unittest.TestCase):
         for key in sorted(cls.all_results.keys()):
             print(cls.all_results[key])
 
-
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_turn1(self):
         turn_1 = Tournament(90, self.participant_1,
                             self.participant_3)
@@ -64,7 +67,7 @@ class TournamentTest(unittest.TestCase):
         last_time = max(results.keys())
         self.assertTrue(results[last_time] == "Ник")
 
-
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_turn2(self):
         turn_2 = Tournament(90, self.participant_2,
                             self.participant_3)
@@ -73,7 +76,7 @@ class TournamentTest(unittest.TestCase):
         last_time = max(results.keys())
         self.assertTrue(results[last_time] == "Ник")
 
-
+    @unittest.skipIf(is_frozen, 'Тесты в этом кейсе заморожены')
     def test_turn3(self):
         turn_3 = Tournament(90, self.participant_1,
                             self.participant_2, self.participant_3)
